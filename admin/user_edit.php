@@ -60,12 +60,6 @@ include '../koneksi.php';
                 </div>
 
                 <div class="form-group">
-                  <label>Foto</label>
-                  <input type="file" name="foto">
-                  <p>Kosong Jika tidak ingin di ganti</p>
-                </div>
-
-                <div class="form-group">
                   <input type="submit" class="btn btn-sm btn-primary" value="Simpan">
                 </div>
                 <?php
