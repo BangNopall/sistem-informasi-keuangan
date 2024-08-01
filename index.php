@@ -15,6 +15,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
+<?php
+session_start();
+
+if (isset($_SESSION['status'])) {
+  if ($_SESSION['status'] == "administrator_logedin") {
+    header("location:admin/");
+  } elseif ($_SESSION['status'] == "anggota_logedin") {
+    header("location:anggota/");
+  }
+}
+?>
+
 <body class=" bg-primary">
   <div class="container">
     <div class="login-box">
