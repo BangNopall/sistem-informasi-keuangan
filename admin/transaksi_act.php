@@ -8,7 +8,7 @@ $keterangan  = $_POST['keterangan'];
 $bank  = $_POST['bank'];
 
 $rand = rand();
-$allowed =  array('jpg','jpeg','pdf');
+$allowed =  array('jpg','jpeg','pdf', 'png');
 $filename = $_FILES['trnfoto']['name'];
 
 $rekening = mysqli_query($koneksi,"select * from bank where bank_id='$bank'");
