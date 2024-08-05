@@ -9,7 +9,7 @@ $keterangan  = $_POST['keterangan'];
 $bank  = $_POST['bank'];
 
 $rand = rand();
-$allowed =  array('jpg', 'jpeg', 'pdf');
+$allowed =  array('jpg', 'jpeg', 'pdf', 'png');
 $filename = $_FILES['trnfoto']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
