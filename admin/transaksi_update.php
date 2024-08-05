@@ -59,15 +59,16 @@ if ($filename == "") {
 	if (!in_array($ext, $allowed)) {
 		header("location:transaksi.php?alert=gagal");
 	} else {
-		// Hapus foto lama
-		if (file_exists('../gambar/bukti/' . $foto_lama)) {
-			unlink('../gambar/bukti/' . $foto_lama);
-		}
+		$target_dir = realpath(dirname(__FILE__) . '/../gambar/bukti/');
+		$target_file = $target_dir . '/' . $rand . '_' . $filename;
 
-		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/' . $rand . '_' . $filename);
-		$xgambar = $rand . '_' . $filename;
-		mysqli_query($koneksi, "update transaksi set transaksi_tanggal='$tanggal', transaksi_jenis='$jenis', transaksi_kategori='$kategori', transaksi_nominal='$nominal', transaksi_keterangan='$keterangan', transaksi_foto='$xgambar', transaksi_bank='$bank' where transaksi_id='$id'");
-		header("location:transaksi.php?alert=berhasilupdate");
+		if (move_uploaded_file($_FILES['trnfoto']['tmp_name'], $target_file)) {
+			$file_gambar = $rand . '_' . $filename;
+			mysqli_query($koneksi, "insert into transaksi values (NULL,'$tanggal','$jenis','$kategori','$nominal','$keterangan','$file_gambar','$bank')");
+			header("location:transaksi.php?alert=berhasil");
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+		}
 	}
 }
 
